@@ -1,0 +1,124 @@
+/* ---- GLOBAL & FORM PAGE STYLES ---- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px 0; /* Add padding for scroll on small screens */
+    background: url('https://images.unsplash.com/photo-1497294815431-9365093b7331?q=80&w=2070&auto=format&fit=crop') no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.wrapper-register {
+    width: 840px; /* Double width */
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    color: #fff;
+    border-radius: 10px;
+    padding: 30px 40px;
+}
+
+#heading {
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Initial state for Sign Up error message */
+#error {
+    display: none; /* Hidden by default */
+    background-color: #ff4d4d;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.error-message {
+    color: #ffcccc;
+    font-size: 0.9em;
+    padding-left: 15px;
+    display: block; /* Make it take its own line */
+    height: 15px; /* Reserve space to prevent layout shift */
+    margin-top: 5px;
+}
+
+.form-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.input-box {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 15px 0;
+}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 40px;
+    font-size: 16px;
+    color: #fff;
+    padding: 0 45px 0 20px;
+}
+
+.input-box input::placeholder { color: #fff; }
+
+.input-box i {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+}
+
+.buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.btn {
+    width: 100%;
+    height: 45px;
+    background: #fff;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Common utilities for this page */
+.spinner {
+    position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    border: 8px solid #f3f3f3; border-top: 8px solid #3498db;
+    border-radius: 50%; width: 60px; height: 60px;
+    animation: spin 2s linear infinite; z-index: 9999; display: none;
+}
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+.bxs-lock-alt, .bxs-lock-open-alt {
+  cursor: pointer;
+}

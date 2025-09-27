@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-store">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <title>Home Page</title>
+    <link rel="icon" href="../img/logo.png" type="image/icon type">
+    <link rel="stylesheet" href="../Libraries/FontAwesome-6.6.0/css/all.min.css">
+    <link href="../Libraries/Boxicon-2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <link href="../Libraries/bootstrap-5.3.3-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <aside id="sidebar">
+            <div class="d-flex">
+                <button class="toggle-btn" type="button">
+                    <i class='bx bxs-category-alt' style='color:#ffffff'></i>
+                </button>
+                <div class="sidebar-logo">
+                    <a href="../pages/home-page.html">VTI Academy</a>
+                </div>
+            </div>
+            <ul class="sidebar-nav">
+                <li class="sidebar-item">
+                    <a href="../pages/profile.html" class="sidebar-link">
+                        <i class='bx bx-user-circle' style='color:#ffffff'></i>
+                        <span>Profile</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="../pages/department-page.html" class="sidebar-link" id="load-department">
+                        <i class='bx bxs-briefcase'></i>
+                        <span>Department</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="../pages/account-page.html" class="sidebar-link" id="load-account">
+                        <i class='bx bxs-user-account'></i>
+                        <span>Account</span>
+                    </a>
+                </li>
+            </ul>
+            <div id="logout-button" class="sidebar-footer" style="height: 4rem;">
+                <a class="sidebar-link">
+                    <i class='bx bx-log-out' style='color:#ffffff'></i>
+                    <span id="logout">Logout</span>
+                </a>
+            </div>
+        </aside>
+        <div class="main p-3">
+            <span id="message"></span>
+            <h1 id="welcome">Welcome back !</h1>
+            <h1 id="user"></h1>
+        </div>
+    </div>
+    <div class="spinner" id="loading-spinner"></div>
+    <script src="../js/overall.js"></script>
+    <script src="../js/home-page.js"></script>
+</body>
+
+</html>

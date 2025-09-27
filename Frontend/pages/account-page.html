@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-store">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <title>Account Page</title>
+    <link rel="icon" href="../img/logo.png" type="image/icon type">
+    <link rel="stylesheet" href="../Libraries/FontAwesome-6.6.0/css/all.min.css">
+    <link href="../Libraries/Boxicon-2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <link href="../Libraries/bootstrap-5.3.3-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    
+</head>
+
+<body>
+    <div class="wrapper">
+        <aside id="sidebar">
+            <div class="d-flex">
+                <button class="toggle-btn" type="button">
+                    <i class='bx bxs-category-alt' style='color:#ffffff'></i>
+                </button>
+                <div class="sidebar-logo">
+                    <a href="../pages/home-page.html">VTI Academy</a>
+                </div>
+            </div>
+            <ul class="sidebar-nav">
+                <li class="sidebar-item">
+                    <a href="../pages/profile.html" class="sidebar-link">
+                        <i class='bx bx-user-circle' style='color:#ffffff'></i>
+                        <span>Profile</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="../pages/department-page.html" class="sidebar-link" id="load-department">
+                        <i class='bx bxs-briefcase'></i>
+                        <span>Department</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="../pages/account-page.html" class="sidebar-link" id="load-account">
+                        <i class='bx bxs-user-account'></i>
+                        <span>Account</span>
+                    </a>
+                </li>
+            </ul>
+            <div id="logout-button" class="sidebar-footer" style="height: 4rem;">
+                <a class="sidebar-link">
+                    <i class='bx bx-log-out' style='color:#ffffff'></i>
+                    <span id="logout">Logout</span>
+                </a>
+            </div>
+        </aside>
+        <div class="main">
+            <span id="message"></span>
+            <h3 id="section">Account</h3>
+            <div id="funcs" class="overall-funtions">
+                <button id="add-account" type="button" class="btn btn-success">Create New Account</button>
+                <button id="delete-all-selected" type="button" class="btn btn-danger">Delete All Selected</button>
+            </div>
+            <div id="main-content" class="main-content">
+                <div class="filters d-flex align-items-center mb-4">
+                    <!-- Search -->
+                    <input type="text" id="search-account-input" class="form-control" placeholder="Search name...">
+                    
+                    <!-- Dropdown filter -->
+                    <select id="filter-by-role" class="form-select me-3">
+                        <option value="None">Select role</option>
+                        <option value="ADMIN">ADMIN</option>
+                        <option value="MANAGER">MANAGER</option>
+                        <option value="EMPLOYEE">EMPLOYEE</option>
+                    </select>
+
+                    <select id="filter-by-department" class="form-select me-3">
+                        <option value="None">Select department</option>
+                    </select>
+                </div>
+            
+                <table class="table table-striped account-table">
+                    <thead>
+                        <tr id="account-tr">
+                            <th><input type="checkbox" id="select-all"></th>
+                            <th>Username</th>
+                            <th>Full Name</th>
+                            <th>Role</th>
+                            <th>Department</th>
+                            <th>Created Date <i class="fas fa-up-long sort-icon" id="asc"></i><i class="fas fa-down-long sort-icon" id="desc"></i></th>
+                            <th>Actions</th>
+                          </tr>
+                      </thead>
+                      
+                  <tbody id="table-body">
+                    <!-- Rows will be dynamically generated -->
+                  </tbody>
+                </table>
+            
+                <div class="pagination d-flex justify-content-between">
+                  <button class="btn btn-primary" id="prev-btn">Prev</button>
+                  <span id="page-info">1 / 2</span>
+                  <button class="btn btn-primary" id="next-btn">Next</button>
+                </div>
+              </div>
+              <div class="forms">
+    
+                <!-- Create form -->
+                <div class="wrapper-cre-acc-form">
+                    <span id="err"></span>
+                    <div class="close-cre-acc"><i id="close-cre-acc" class="fas fa-x"></i></div>
+                    <div class="form-cre-acc">
+                        <div class="input-box-form-cre-acc">
+                            <div class="input-box">
+                                <div>
+                                    <input id="in-cre-acc-first-name" type="text" placeholder="First Name..." required>
+                                    <span class="error-message" id="error-first-name"></span>
+                                </div>
+
+                                <div>
+                                    <input id="in-cre-acc-last-name" type="text" placeholder="Last Name..." required>
+                                    <span class="error-message" id="error-last-name"></span>
+                                </div>
+
+                               <div>
+                                    <input id="in-cre-acc-email" type="email" placeholder="Email..." required>
+                                    <span class="error-message" id="error-email"></span>
+                               </div>
+                            </div>
+                       
+                            <div class="input-box">
+                                <select id="role-cre-acc-form" class="form-select me-3">
+                                    <option value="None">Select role</option>
+                                    <option value="ADMIN">ADMIN</option>
+                                    <option value="MANAGER">MANAGER</option>
+                                    <option value="EMPLOYEE">EMPLOYEE</option>
+                                </select>
+                            </div>
+
+                            <div class="input-box">
+                                <select id="department-cre-acc-form" class="form-select me-3">
+                                    <option value="None">Select department</option>
+                                </select>
+                            </div>
+                        </div>
+                    
+                        <div class="done-button"><button id="done-cre-acc" type="button" class="btn btn-light">Create Account</button></div>
+                    </div>
+                </div>
+
+                <!-- Edit form -->
+                <div class="wrapper-edt-acc-form">
+                    <span id="edt-err"></span>
+                    <div class="close-edt-acc"><i id="close-edt-acc" class="fas fa-x"></i></div>
+
+                    <div class="form-edt-acc">
+                        <div class="input-box">
+                            <div>
+                                <span>Full Name</span>
+                                <input id="full-name-info" disabled>
+                            </div>
+                            <div>
+                                <span>Email</span>
+                                <input id="email-info" disabled>
+                            </div>
+                        </div>
+                        <div class="input-box-form-acc">
+                            <select id="role-edt-acc-form" class="form-select me-3">
+                                <option value="None">Select role</option>
+                                <option value="ADMIN">ADMIN</option>
+                                <option value="MANAGER">MANAGER</option>
+                                <option value="EMPLOYEE">EMPLOYEE</option>
+                            </select>
+                        
+                            <select id="department-edt-acc-form" class="form-select me-3">
+                                <option value="None">Select department</option>
+                            </select>
+                        </div>
+                        <div class="done-button">
+                            <button id="done-edt-acc" type="button" class="btn btn-light">Save</button>
+                        </div>
+                    </div>
+                    </div>
+
+                <!-- Delete form -->
+                <div class="wrapper-del-acc-form">
+                    <div class="form-del-acc">
+                        <div>
+                            <div id="title-del-acc">Delete 23 accounts ?</div>
+                        </div>
+                        <div class="buttons">
+                            <button id="cancel" type="button" class="btn btn-outline-secondary">Cancel</button>
+                            <button id="del-all-acc" type="button" class="btn btn-outline-danger">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="spinner" id="loading-spinner"></div>
+    <script src="../Libraries/JQuery/jquery-3.7.1.min.js"></script>
+    <script src="../js/urlAccDep.js"></script>
+    <script src="../js/overall.js"></script>
+    <script src="../js/account-page.js"></script>
+</body>
+
+</html>

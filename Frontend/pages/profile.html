@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile</title>
+    <link rel="icon" href="../img/logo.png" type="image/icon type">
+    <link rel="stylesheet" href="../Libraries/FontAwesome-6.6.0/css/all.min.css">
+    <link href="../Libraries/Boxicon-2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <link href="../Libraries/bootstrap-5.3.3-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/profile.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <aside id="sidebar">
+            <div class="d-flex">
+                <button class="toggle-btn" type="button">
+                    <i class='bx bxs-category-alt' style='color:#ffffff'></i>
+                </button>
+                <div class="sidebar-logo">
+                    <a href="./home-page.html">VTI Academy</a>
+                </div>
+            </div>
+            <ul class="sidebar-nav">
+                <li class="sidebar-item">
+                    <a href="./profile.html" class="sidebar-link">
+                        <i class='bx bx-user-circle' style='color:#ffffff'></i>
+                        <span>Profile</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="./department-page.html" class="sidebar-link">
+                        <i class='bx bxs-briefcase'></i>
+                        <span>Department</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="./account-page.html" class="sidebar-link">
+                        <i class='bx bxs-user-account'></i>
+                        <span>Account</span>
+                    </a>
+                </li>
+            </ul>
+            <div id="logout-button" class="sidebar-footer">
+                <a class="sidebar-link">
+                    <i class='bx bx-log-out' style='color:#ffffff'></i>
+                    <span id="logout">Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <div class="main p-3">
+            <div class="main-content">
+                <div class="container d-flex justify-content-center">
+                    <div class="profile-card">
+                        <h3 class="form-title text-center mb-4">User Profile</h3>
+
+                        <div id="message-container"></div>
+                        
+                        <form id="profile-form" novalidate>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="first-name" class="form-label">First Name</label>
+                                    <input id="first-name" type="text" class="form-control" placeholder="First Name" disabled>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="last-name" class="form-label">Last Name</label>
+                                    <input id="last-name" type="text" class="form-control" placeholder="Last Name" disabled>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input id="email" type="email" class="form-control" placeholder="Email" disabled>
+                            </div>
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Username</label>
+                                <input id="username" type="text" class="form-control" placeholder="Username" disabled>
+                            </div>
+
+                            <hr>
+
+                            <h5 class="mt-4">Change Password</h5>
+                            <div class="mb-3">
+                                <label for="old-password" class="form-label">Old Password</label>
+                                <input id="old-password" type="password" class="form-control" placeholder="Enter your current password" disabled>
+                                <div class="invalid-feedback"></div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="new-password" class="form-label">New Password</label>
+                                <input id="new-password" type="password" class="form-control" placeholder="Enter new password" disabled>
+                                <div class="invalid-feedback"></div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="confirm-password" class="form-label">Confirm New Password</label>
+                                <input id="confirm-password" type="password" class="form-control" placeholder="Confirm new password" disabled>
+                                 <div class="invalid-feedback"></div>
+                            </div>
+                            
+                            <div class="mt-4 text-center">
+                                <button type="button" id="update-profile-button" class="btn btn-info">Edit Profile</button>
+                                <div id="edit-buttons" class="d-none">
+                                    <button type="button" id="cancel-update" class="btn btn-secondary">Cancel</button>
+                                    <button type="submit" id="save-update" class="btn btn-primary">Save Changes</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div> </div>
+    </div>
+
+    <div class="spinner" id="loading-spinner" style="display: none;"></div>
+   
+    <script src="../js/overall.js"></script>
+    <script src="../js/profile.js"></script>
+</body>
+
+</html>

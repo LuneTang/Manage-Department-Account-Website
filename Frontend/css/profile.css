@@ -1,0 +1,29 @@
+/* ---- PROFILE PAGE SPECIFIC STYLES ---- */
+
+.profile-card {
+    background: #ffffff;
+    padding: 2rem; 
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto 2rem auto;
+}
+
+.profile-card .form-title {
+    font-weight: 600;
+}
+
+.profile-card .form-label {
+    font-weight: 500;
+    color: #555;
+}
+
+.profile-card input:disabled {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+}
+
+.profile-card hr {
+    margin: 2rem 0;
+}

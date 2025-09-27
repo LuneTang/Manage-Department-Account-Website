@@ -1,0 +1,416 @@
+/* ---- GLOBAL & MAIN LAYOUT STYLES ---- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    line-height: 1.5;
+    background-color: #f0f2f5;
+}
+
+a {
+    text-decoration: none;
+}
+
+.wrapper {
+    display: flex;
+}
+
+/* Sidebar */
+#sidebar {
+    width: 250px;
+    background: #0c1e35;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    transition: width 0.3s ease;
+}
+
+#sidebar .sidebar-logo a {
+    color: #FFF;
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: 1rem 1.5rem;
+    display: block;
+}
+
+#sidebar .sidebar-nav {
+    list-style: none;
+    padding: 0 0.5rem;
+    flex-grow: 1;
+}
+
+#sidebar .sidebar-link {
+    display: flex;
+    align-items: center;
+    color: #FFF;
+    padding: .8rem 1rem;
+    border-radius: .5rem;
+    transition: background-color 0.2s ease;
+}
+#sidebar .sidebar-link:hover { background-color: rgba(255, 255, 255, 0.1); }
+#sidebar .sidebar-link i { font-size: 1.2rem; margin-right: 1rem; }
+.toggle-btn { background-color: transparent; border: 0; padding: 1rem 1.5rem; cursor: pointer; }
+.sidebar-footer { padding: 1rem; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+
+/* Main Content Area */
+.main {
+    flex-grow: 1;
+    padding: 2rem;
+    overflow-x: auto;
+    width: calc(100% - 250px);
+    transition: width 0.3s ease;
+}
+
+/* General Table Styling */
+.table {
+    border-collapse: collapse;
+    width: 100%;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    background-color: white;
+}
+
+/* Modal Forms Styling */
+.wrapper-cre-dep-form, .wrapper-edt-dep-form, .wrapper-del-dep-form,
+.wrapper-cre-acc-form, .wrapper-edt-acc-form, .wrapper-del-acc-form {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); display: none; /* Changed to none */
+    justify-content: center; align-items: center; z-index: 1050;
+}
+.form-cre-dep, .form-edt-dep, .form-cre-acc, .form-edt-acc {
+    background-color: #fff; padding: 2rem; border-radius: 8px;
+    width: 90%; max-width: 1000px; max-height: 90vh; overflow-y: auto;
+    position: absolute;
+    top: 11rem;
+    left: 19rem;
+}
+.form-cre-dep, .form-edt-dep {
+  top: 5rem !important;
+}
+.form-del-dep, .form-del-acc {
+    background-color: #fff; padding: 2rem; border-radius: 8px;
+    width: 90%; max-width: 500px; text-align: center;
+    position: absolute;
+    top: 11rem;
+    left: 19rem;
+}
+.form-del-dep {
+  top: 10rem;
+  left: 37rem;
+}
+.close-cre-dep, .close-edt-dep, .close-cre-acc, .close-edt-acc {
+    position: absolute; top: 20px; right: 20px; font-size: 1.5rem;
+    cursor: pointer; color: #fff;
+}
+
+/* Common utilities */
+.spinner {
+    position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    border: 8px solid #f3f3f3; border-top: 8px solid #3498db;
+    border-radius: 50%; width: 60px; height: 60px;
+    animation: spin 2s linear infinite; z-index: 9999; display: none;
+}
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+#setting { position: fixed; bottom: 20px; right: 20px; width: 50px; cursor: pointer; z-index: 1000; }
+
+/* ---- FILTER CONTAINER STYLES ---- */
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center; 
+    gap: 15px;
+    margin-top: 20px; 
+    margin-bottom: 20px; 
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.filters > input[type="text"],
+.filters > select {
+    flex-grow: 1; /* Cho phép các input/select co giãn */
+    min-width: 180px; /* Đặt chiều rộng tối thiểu */
+}
+
+.filter-range {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+
+/* ================================================================
+== BỔ SUNG CSS CHO BÊN TRONG CÁC FORM (CREATE/EDIT) ==
+================================================================
+*/
+
+/* ---- CSS for INSIDE Department Create/Edit Forms ---- */
+
+/* ---- CSS Cập nhật cho Form Department (Create & Edit) ---- */
+
+/* Bố cục chung cho toàn bộ form */
+.form-cre-dep, .form-edt-dep {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Khoảng cách giữa các phần tử chính */
+}
+
+/* --- 1. Phần Header (Input Name & Select Type) --- */
+
+/* Sử dụng Grid để xếp Input Name và Select Type trên cùng một hàng */
+.input-box-form-dep {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 cột bằng nhau */
+    gap: 16px; /* Khoảng cách giữa 2 ô */
+}
+
+/* Kiểu dáng chung cho input và select trong form */
+.form-cre-dep input[type="text"],
+.form-edt-dep input[type="text"],
+.form-cre-dep select,
+.form-edt-dep select {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1rem;
+    color: #333;
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* Mũi tên tùy chỉnh cho ô Select */
+.form-cre-dep select,
+.form-edt-dep select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;
+}
+
+/* Hiệu ứng khi focus */
+.form-cre-dep input[type="text"]:focus,
+.form-edt-dep input[type="text"]:focus,
+.form-cre-dep select:focus,
+.form-edt-dep select:focus {
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+
+/* --- 2. Phần Bảng Account --- */
+
+/* Tiêu đề "Add account" */
+#title-acc-cre-dep, #title-acc-edt-dep {
+    font-weight: 600;
+    color: #333;
+    margin-top: 10px;
+}
+
+/* Định dạng lại header của bảng */
+.cre-form-table thead, .edt-form-table thead {
+    background-color: #f7f7f7;
+    color: #555;
+    font-weight: 600;
+}
+
+/* Bo tròn góc cho header */
+.cre-form-table thead th:first-child, .edt-form-table thead th:first-child {
+    border-top-left-radius: 8px;
+}
+.cre-form-table thead th:last-child, .edt-form-table thead th:last-child {
+    border-top-right-radius: 8px;
+}
+
+
+/* --- 3. Phần Nút bấm và Phân trang (Quan trọng nhất) --- */
+
+/* Container chính cho các nút hành động */
+.form-actions {
+    display: flex;
+    justify-content: space-between; /* Đẩy 2 cụm nút ra 2 phía */
+    align-items: center; /* Căn giữa các item theo chiều dọc */
+    margin-top: 20px;
+}
+
+/* Nút Save sẽ nằm bên trái */
+.form-actions .done-button {
+    margin: 0; /* Bỏ margin mặc định nếu có */
+}
+
+/* Nhóm các nút phân trang lại với nhau */
+.pagination-group {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Khoảng cách giữa Prev, số trang, và Next */
+}
+
+/* Style cho các nút bấm */
+.form-actions .btn {
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 8px 25px;
+    border-radius: 6px;
+    border: none;
+    color: white;
+    background-color: #6a5af9;
+}
+
+.form-actions .btn:hover {
+    background-color: #5548c7;
+}
+
+.form-actions .btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+
+/* ---- CSS Cập nhật cho Form Create Account ---- */
+
+/* Style cho container chính của form */
+.form-cre-acc {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Tăng khoảng cách đều giữa các nhóm phần tử */
+}
+
+/* Sử dụng Grid cho nhóm input Tên và Email */
+.input-box-form-cre-acc .input-box:first-child {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Tạo 2 cột bằng nhau */
+    gap: 16px; /* Khoảng cách đều giữa các ô */
+}
+
+/* Đảm bảo ô Email chiếm trọn 2 cột */
+.input-box-form-cre-acc .input-box:first-child div:nth-child(3) {
+    grid-column: 1 / -1; /* Bắt đầu từ cột 1 và kết thúc ở cột cuối cùng */
+}
+
+/* ---- Định dạng chi tiết cho các ô Input và Select ---- */
+
+/* Áp dụng cho cả input text, email và select box */
+.form-cre-acc input[type="text"],
+.form-cre-acc input[type="email"],
+.form-cre-acc select {
+    width: 100%;
+    padding: 12px 15px; /* Tăng padding cho dễ nhìn */
+    font-size: 1rem; /* Cỡ chữ thống nhất */
+    color: #333;
+    background-color: #f8f9fa; /* Màu nền nhẹ */
+    border: 1px solid #ced4da; /* Viền mảnh, chuyên nghiệp */
+    border-radius: 6px; /* Bo góc nhẹ */
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    -webkit-appearance: none; /* Bỏ giao diện mặc định của trình duyệt */
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* Tùy chỉnh mũi tên cho các ô Select */
+.form-cre-acc select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;
+}
+
+.input-box {
+  margin-bottom: 10px;
+}
+/* Hiệu ứng khi người dùng focus (click vào) ô input/select */
+.form-cre-acc input[type="text"]:focus,
+.form-cre-acc input[type="email"]:focus,
+.form-cre-acc select:focus {
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* Căn chỉnh lại nút "Create Account" */
+.form-cre-acc .done-button {
+    display: flex;
+    justify-content: flex-end; /* Đẩy nút sang phải */
+    margin-top: 10px;
+}
+
+.form-cre-acc .done-button .btn {
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 10px 25px;
+    background-color: #6a5af9; /* Màu tím nổi bật */
+    color: white;
+}
+.form-cre-acc .done-button .btn:hover {
+    background-color: #5548c7;
+}
+
+/* ---- CSS Cập nhật cho Form Edit Account ---- */
+
+/* Style chung cho toàn bộ form */
+.form-edt-acc {
+    display: flex;
+    flex-direction: column; /* Sắp xếp các phần tử theo chiều dọc */
+    gap: 18px; /* Khoảng cách đều giữa các phần tử */
+}
+
+/* Nhóm Label và Input lại với nhau */
+.form-edt-acc .input-box > div {
+    display: flex;
+    flex-direction: column; /* Đặt label nằm trên input */
+    gap: 6px; /* Khoảng cách nhỏ giữa label và input */
+}
+
+/* Style cho các label (Full Name, Email) */
+.form-edt-acc .input-box span {
+    font-weight: 500;
+    color: #495057;
+    font-size: 0.9rem;
+}
+
+/* Style cho các ô input bị vô hiệu hóa (disabled) */
+.form-edt-acc input:disabled {
+    background-color: #e9ecef; /* Màu nền xám nhẹ */
+    color: #495057; /* Màu chữ đậm hơn cho dễ đọc */
+    cursor: not-allowed; /* Biểu tượng con trỏ cấm */
+    border: 1px solid #ced4da;
+}
+
+/* Căn chỉnh lại các ô select (nếu cần) */
+.form-edt-acc .input-box-form-acc {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* Căn chỉnh lại nút Save sang phải */
+.form-edt-acc .done-button {
+    display: flex;
+    justify-content: flex-end; /* Đẩy nút sang phải */
+    margin-top: 10px;
+}
+
+.form-edt-acc .done-button .btn {
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 10px 30px; /* Tăng padding cho nút to hơn */
+    background-color: #6a5af9;
+    color: white;
+}
+.form-edt-acc .done-button .btn:hover {
+    background-color: #5548c7;
+}
+
+#full-name-info {
+  margin-bottom: 20px;
+}
